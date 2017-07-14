@@ -1,0 +1,35 @@
+# project: cj53xjphwani0017517s2ubl3
+# version: 2
+
+type Person implements Node {
+  name: String!
+  messages: [Message!]! @relation(name: "UserMessages")
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}
+
+type Message implements Node {
+  text: String!
+  sentBy: Person @relation(name: "UserMessages")
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}
